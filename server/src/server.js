@@ -1,16 +1,15 @@
 const http = require('http');
 const mongoose = require('mongoose');
-const dotenv = require('dotenv')
-dotenv.config();
+require('dotenv').config();
 
 const app = require('./app');
 
 const { loadPlanetsData } = require('./models/planets.model');
 const { loadLaunchesData } = require('./models/launches.model');
 
-const PORT = 8000;
+const PORT = process.env.PORT || 8000;
 
-const MONGO_URI = process.env.MONGO_URI;
+const MONGO_URI = process.env.MONGO_URL;
 
 const server = http.createServer(app);
 
